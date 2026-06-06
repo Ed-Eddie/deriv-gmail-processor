@@ -13,6 +13,12 @@ const ALLOWED_SENDER = process.env.ALLOWED_SENDER_EMAIL?.toLowerCase();
  */
 export async function handlePubSubPush(req, res) {
   // Acknowledge immediately — Google will retry if we don't respond fast
+  // ── ADD THIS BLOCK ──
+  logger.info("Pub/Sub push received");
+  logger.info("Headers: " + JSON.stringify(req.headers, null, 2));
+  logger.info("Body: " + JSON.stringify(req.body, null, 2));
+  // ───────────────────
+  
   res.sendStatus(204);
 
   try {
